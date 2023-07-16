@@ -3,7 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -13,23 +12,50 @@ import Lottie from "lottie-react";
 import Mail_animation from '../Images/Mail_animation.json'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import NotesIcon from '@mui/icons-material/Notes';
+import {  addSignupUser } from '../Redux/Reducer'
+import { useDispatch, useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { Link} from 'react-router-dom';
+
 
 
 const defaultTheme = createTheme();
 const Signup = () => {
+
+    const dispatch = useDispatch()
+
+    const[signedUp, setsignedUp] = useState({
+        userName: "",
+        email: "",
+        password: ""
+
+    });
+    const Setting = (event) => {
+        const { name, value } = event.target
+        setsignedUp((data) => {
+            return {
+                ...data,
+                [name]: value
+            }
+        })
+    }
+
     const handleSubmit = (event) => {
+        dispatch(addSignupUser(signedUp))
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log({
-            email: data.get('email'),
-            password: data.get('password'),
+          email: data.get('email'),
+          password: data.get('password'),
         });
-    };
+      };
+
+
 
     return (
         <>
             <ThemeProvider theme={defaultTheme}>
-                <Grid container component="main" sx={{ height: '100vh' ,overflow:'hidden'}}>
+                <Grid container component="main" sx={{ height: '100vh', overflow: 'hidden' }}>
                     <CssBaseline />
                     <Grid
                         item
@@ -81,26 +107,17 @@ const Signup = () => {
                             <Typography component="h1" variant="h5" className='logoHeading'>
                                 MAILING APPLICATION
                             </Typography>
-                            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                            <TextField
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    id="fname"
-                                    label="First Name"
-                                    name="fname"
-                                    autoComplete="First name"
+                            <Box component="form" noValidate onSubmit={handleSubmit}>
+                                <TextField
+                                     margin="normal"
+                                     required
+                                     fullWidth
+                                    name="userName"
+                                    id="userName"
+                                    label="User Name"
                                     autoFocus
-                                />
-                                 <TextField
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    id="lname"
-                                    label="Last Name"
-                                    name="lname"
-                                    autoComplete="Last name"
-                                    autoFocus
+                                    onChange={Setting}
+                                    value={signedUp.userName}
                                 />
                                 <TextField
                                     margin="normal"
@@ -109,6 +126,8 @@ const Signup = () => {
                                     id="email"
                                     label="Email Address"
                                     name="email"
+                                    onChange={Setting}
+                                    value={signedUp.email}
                                     autoComplete="email"
                                     autoFocus
                                 />
@@ -117,6 +136,8 @@ const Signup = () => {
                                     required
                                     fullWidth
                                     name="password"
+                                    onChange={Setting}
+                                    value={signedUp.password}
                                     label="Password"
                                     type="password"
                                     id="password"
@@ -137,7 +158,7 @@ const Signup = () => {
                   </Link> */}
                                     </Grid>
                                     <Grid item>
-                                        <Link href="#" variant="body2">
+                                        <Link to="/login" variant="body2">
                                             {"Already have an account? Sign In"}
                                         </Link>
                                     </Grid>

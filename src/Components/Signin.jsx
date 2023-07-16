@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -16,10 +15,49 @@ import Lottie from "lottie-react";
 import Mail_animation from '../Images/Mail_animation.json'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import NotesIcon from '@mui/icons-material/Notes';
+import { Link,useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { addLoginUser } from '../Redux/Reducer'
+
+
 
 const defaultTheme = createTheme();
-const login = () => {
-    const handleSubmit = (event) => {
+const Signin = () => {
+
+    const dispatch = useDispatch()
+    const DashboardCheck = useSelector(state => state.user.redirectToDashboard)
+    const navigate = useNavigate()
+
+    const [signIn, setSignIn] = useState({
+        email: "",
+        password: "",
+    });
+
+    const Setting = (event) => {
+        const { name, value } = event.target
+        setSignIn((data) => {
+            return {
+                ...data,
+                [name]: value
+            }
+        })
+    }
+
+    useEffect(() => {
+        if (DashboardCheck) {
+            navigate("/home");
+        }
+    }, [DashboardCheck])
+
+    const handleSubmit = async(credentials,event) => {
+        try{
+           await dispatch(addLoginUser(signIn,credentials)).unwrap();
+        }
+        catch(error){
+            console.log('Login error:', error.message);
+        }
+        
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log({
@@ -27,10 +65,13 @@ const login = () => {
             password: data.get('password'),
         });
     };
+
+
+
     return (
         <>
             <ThemeProvider theme={defaultTheme}>
-                <Grid container component="main" sx={{ height: '100vh' ,overflow:'hidden'}}>
+                <Grid container component="main" sx={{ height: '100vh', overflow: 'hidden' }}>
                     <CssBaseline />
                     <Grid
                         item
@@ -61,10 +102,10 @@ const login = () => {
                             <Grid item xs>
                             </Grid>
                             <Grid item sx={{ display: 'flex' }}>
-                                <Avatar sx={{ m: 1,  width: 28, height: 28, bgcolor: 'black' }}>
+                                <Avatar sx={{ m: 1, width: 28, height: 28, bgcolor: 'black' }}>
                                     <KeyboardVoiceIcon />
                                 </Avatar>
-                                <Avatar sx={{m: 1,  width: 28, height: 28, bgcolor: 'black'  }}>
+                                <Avatar sx={{ m: 1, width: 28, height: 28, bgcolor: 'black' }}>
                                     <NotesIcon />
                                 </Avatar>
                             </Grid>
@@ -95,6 +136,8 @@ const login = () => {
                                     name="email"
                                     autoComplete="email"
                                     autoFocus
+                                    onChange={Setting}
+                                    value={signIn.email}
                                 />
                                 <TextField
                                     margin="normal"
@@ -105,6 +148,8 @@ const login = () => {
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
+                                    onChange={Setting}
+                                    value={signIn.password}
                                 />
                                 <FormControlLabel
                                     control={<Checkbox value="remember" color="primary" />}
@@ -125,7 +170,7 @@ const login = () => {
                   </Link> */}
                                     </Grid>
                                     <Grid item>
-                                        <Link href="#" variant="body2">
+                                        <Link to="/" variant="body2">
                                             {"Don't have an account? Sign Up"}
                                         </Link>
                                     </Grid>
@@ -139,4 +184,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Signin
