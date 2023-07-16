@@ -50,14 +50,8 @@ const Signin = () => {
         }
     }, [DashboardCheck])
 
-    const handleSubmit = async(credentials,event) => {
-        try{
-           await dispatch(addLoginUser(signIn,credentials)).unwrap();
-        }
-        catch(error){
-            console.log('Login error:', error.message);
-        }
-        
+    const handleSubmit =(event) => {
+            dispatch(addLoginUser(signIn))
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log({

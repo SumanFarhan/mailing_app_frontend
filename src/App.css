@@ -25,6 +25,61 @@
 .css-ag7rrr-MuiTypography-root{
   font-weight: 600 !important;
 }
+.css-o5srbh-MuiPaper-root-MuiAppBar-root{
+  background-color:black !important;
+  color: #808080!important;
+}
+.css-uh02xs-MuiTypography-root{
+  font-weight: 600 !important;
+}
+.css-n7rtur-MuiPaper-root-MuiAppBar-root {
+  background-color:black !important;
+  color: #808080!important;
+}
+.css-cveggr-MuiListItemIcon-root{
+  color:#808080 !important
+}
+.css-78trlr-MuiButtonBase-root-MuiIconButton-root{
+  color:#808080 !important
+}
+.css-dsuxgy-MuiTableCell-root
+{
+  border-bottom: 1px solid black !important;
+}
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+  background-color: black !important;
+}
+
+.css-mkzahr-MuiListSubheader-root{
+  background-color: black !important;
+  color: Grey !important;
+}
+
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+color: #808080 !important;
+}
+.css-10hburv-MuiTypography-root{
+  font-weight:  600 !important;
+}
+
+.css-gi7hi0-MuiTypography-root{
+  color:black!important
+}
+
+.css-1slnj5u-MuiPaper-root{
+background-color: #808080  !important;
+}
+.compose{
+color: #808080 !important;
+background-color: black !important;
+border:  white !important;
+}
+
+.logOut{
+text-decoration: none;
+color:#808080;
+font-weight: 400;
+}
 .logoHeading{
   font-family: Arial, sans-serif;
   font-size: 2rem !important;
