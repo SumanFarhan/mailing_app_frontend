@@ -36,6 +36,26 @@ const rows = [
     '15 Mar, 2019',
     'Bruce Springsteen'
   ),
+  createData(
+    4,
+    '15 Mar, 2019',
+    'Bruce Springsteen'
+  ),
+  createData(
+    4,
+    '15 Mar, 2019',
+    'Bruce Springsteen'
+  ),
+  createData(
+    4,
+    '15 Mar, 2019',
+    'Bruce Springsteen'
+  ),
+  createData(
+    4,
+    '15 Mar, 2019',
+    'Bruce Springsteen'
+  ),
 ];
 
 function preventDefault(event) {

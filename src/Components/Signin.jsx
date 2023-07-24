@@ -46,7 +46,7 @@ const Signin = () => {
 
     useEffect(() => {
         if (DashboardCheck) {
-            navigate("/home");
+            navigate("/main");
         }
     }, [DashboardCheck])
 

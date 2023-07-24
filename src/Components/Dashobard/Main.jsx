@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState, Suspense } from 'react'
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -9,18 +9,19 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { mainListItems, secondaryListItems } from './listItems';
-import Orders from './Orders';
+import Listitems from './listItems'
+import Orders from './Mails';
 import Compose from '../Compose'
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
+import { outlet } from 'react-router-dom'
+
 
 
 function Copyright(props) {
@@ -85,9 +86,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
+const Main = () => {
 
-
-const Home = () => {
+  const location = useLocation();
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -97,6 +98,7 @@ const Home = () => {
 
   const handleCloseModal = () => {
     setOpenModal(false);
+
   };
 
   const [open, setOpen] = React.useState(true);
@@ -112,7 +114,7 @@ const Home = () => {
           <AppBar position="absolute" open={open}>
             <Toolbar
               sx={{
-                pr: '24px', // keep right padding when drawer closed
+                pr: '24px',
               }}
             >
               <IconButton
@@ -133,18 +135,13 @@ const Home = () => {
                 color="inherit"
                 noWrap
                 sx={{ flexGrow: 1 }}
-                
+
               >
-                 MAILING APPLICATION
+                MAILING APPLICATION
               </Typography>
               <Link to="/login" variant="body2" className='logOut'>
-                                        Logout    
-                                        </Link>
-              {/* <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton> */}
+                Logout
+              </Link>
             </Toolbar>
           </AppBar>
           <Drawer variant="permanent" open={open}>
@@ -161,14 +158,13 @@ const Home = () => {
               </IconButton>
             </Toolbar>
             <Divider />
-            <Button variant="contained" className="compose" onClick={handleOpenModal}>
-        <EditIcon/> Compose 
-    </Button>
-    <Compose open={openModal} handleClose={handleCloseModal} />
+            <Button variant="contained" className="compose" onClick={handleOpenModal}
+              >
+              <EditIcon /> {open ? 'Compose' : ''}
+            </Button>
+              <Compose open={openModal} handleClose={handleCloseModal} />
             <List component="nav">
-              {mainListItems}
-              <Divider sx={{ my: 1 }} />
-              {secondaryListItems}
+              <Listitems location={location} type={location.pathname.split('/').pop()} />
             </List>
           </Drawer>
           <Box
@@ -186,10 +182,12 @@ const Home = () => {
             <Toolbar />
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
               <Grid container spacing={3}>
-                               {/* Recent Mails */}
+
+                {/* Recent Mails */}
                 <Grid item xs={12}>
                   <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                    <Orders />
+                    <Outlet />
+                    {/* <Orders /> */}
                   </Paper>
                 </Grid>
               </Grid>
@@ -202,4 +200,5 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Main
+
