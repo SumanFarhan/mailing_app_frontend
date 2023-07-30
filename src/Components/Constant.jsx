@@ -9,6 +9,10 @@ export const VIEWS = {
 }
 
 export const EMPTY_TABS = {
+    allmail:{
+        heading: 'Your mailbox is empty',
+        subHeading: "Mails that don't appear in other tabs will be shown here."
+    },
     inbox: {
         heading: 'Your inbox is empty',
         subHeading: "Mails that don't appear in other tabs will be shown here."

@@ -49,7 +49,7 @@ const Emails = () => {
     <>
       <Box style={{ padding: '20px 10px 0 10px', display: 'flex', alignItems: 'center' }}>
         <Checkbox size="small" onChange={(e) => selectAllEmails(e)} />
-        <DeleteOutline onClick={(e) => deleteSelectedEmails(e)} />
+        <DeleteOutline  style={{color:'#392C7E'}} onClick={(e) => deleteSelectedEmails(e)} />
       </Box>
       <List>
         {getEmailsService?.response?.map((email) => (

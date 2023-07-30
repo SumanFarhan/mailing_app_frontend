@@ -72,24 +72,22 @@ export const addUser = createSlice({
     reducers: {},
     extraReducers: {
         [addSignupUser.rejected]: (state) => {
-            console.log('Signup Rejected');
+            // console.log('Signup Rejected');
         },
         [addSignupUser.fulfilled]: (state, action) => {
             console.log(JSON.stringify(action.payload));
-            console.log('Signup done');
+            // console.log('Signup done');
             state.response = action.payload.message;
             alert(state.response);
         },
         [addSignupUser.pending]: state => {
-            console.log('Signup Pending...');
+            // console.log('Signup Pending...');
         },
         [addLoginUser.pending]: state => {
-            console.log('login Pending...');
+            // console.log('login Pending...');
         },
         [addLoginUser.fulfilled]: (state, action) => {
             state.loginData = action.payload;
-            // alert("Logedin Successfully",state.loginData)
-            console.log('login done...');
             state.redirectToDashboard = true;
         },
         [addLoginUser.rejected]: (state) => {
@@ -99,7 +97,7 @@ export const addUser = createSlice({
 
 })
 
-export const { SignupReducer, LoginReducer ,} = addUser.actions
+// export const { SignupReducer, LoginReducer } = addUser.actions
 export const { loginSuccess, loginFailure } = authSlice.actions;
 
 export default addUser.reducer 

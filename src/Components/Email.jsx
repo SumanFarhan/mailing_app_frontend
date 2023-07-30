@@ -20,8 +20,8 @@ const Wrapper = styled(ListItem)`
 
 const Indicator = styled(Typography)`
     font-size: 12px !important;
-    background: #ddd;
-    color: black;
+    background: #392C7E ;
+    color: grey;
     border-radius: 4px;
     margin-right: 6px;
     padding: 0 4px;
@@ -31,7 +31,7 @@ const Date = styled(Typography)({
     marginLeft: 'auto',
     marginRight: 20,
     fontSize: 12,
-    color: 'black'
+    color: '#392C7E'
 })
 
 const Email = ({ email, setStarredEmail, selectedEmails, setSelectedEmails,setRefreshScreen }) => {
@@ -61,9 +61,9 @@ const Email = ({ email, setStarredEmail, selectedEmails, setSelectedEmails,setRe
             />
             {
                 email.starred ?
-                    <Star fontSize="small" style={{ marginRight: 10 }} onClick={() => toggleStarredEmail()} />
+                    <Star fontSize="small" style={{ color:'#392C7E',marginRight: 10 }} onClick={() => toggleStarredEmail()} />
                     :
-                    <StarBorder fontSize="small" style={{ marginRight: 10 }} onClick={() => toggleStarredEmail()} />
+                    <StarBorder fontSize="small" style={{ color:'#392C7E',marginRight: 10 }} onClick={() => toggleStarredEmail()} />
             }
            
             <Box onClick={() => navigate(`/main/view/${email._id}`, { state: { email: email }})}>

@@ -17,13 +17,13 @@ const Subject = styled(Typography)({
   fontSize: 22,
   margin: '10px 0 20px 75px',
   display: 'flex',
-  color: 'black'
+  color: '#392C7E'
 })
 
 const Indicator = styled(Box)`
     font-size: 12px !important;
     background: #ddd;
-    color: 'black';
+    color: '#392C7E';
     border-radius: 4px;
     margin-left: 6px;
     padding: 2px 4px;
@@ -53,7 +53,7 @@ const Container = styled(Box)({
 const Date = styled(Typography)({
   margin: '0 50px 0 auto',
   fontSize: 12,
-  color: 'black'
+  color: '#392C7E'
 })
 
 const ViewEmail = () => {
@@ -74,10 +74,10 @@ const ViewEmail = () => {
       <Grid item xs>
       </Grid>
       <Grid item sx={{ display: 'flex' }}>
-        <Avatar sx={{ m: 1, width: 28, height: 28, bgcolor: 'black' }}>
+        <Avatar sx={{ m: 1, width: 28, height: 28, bgcolor: '#392C7E' }}>
           <KeyboardVoiceIcon />
         </Avatar>
-        <Avatar sx={{ m: 1, width: 28, height: 28, bgcolor: 'black' }}>
+        <Avatar sx={{ m: 1, width: 28, height: 28, bgcolor: '#392C7E' }}>
           <NotesIcon />
         </Avatar>
       </Grid>

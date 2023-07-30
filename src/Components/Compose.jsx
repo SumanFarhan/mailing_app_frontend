@@ -119,10 +119,10 @@ const Compose = ({ open, handleClose }) => {
             <Grid item xs>
             </Grid>
             <Grid item sx={{ display: 'flex' }}>
-              <Avatar sx={{ m: 1, width: 28, height: 28, bgcolor: 'black' }}>
+              <Avatar sx={{ m: 1, width: 28, height: 28, bgcolor: '#392C7E' }}>
                 <KeyboardVoiceIcon />
               </Avatar>
-              <Avatar sx={{ m: 1, width: 28, height: 28, bgcolor: 'black' }}>
+              <Avatar sx={{ m: 1, width: 28, height: 28, bgcolor: '#392C7E' }}>
                 <NotesIcon />
               </Avatar>
             </Grid>

@@ -137,7 +137,7 @@ const Main = () => {
                 sx={{ flexGrow: 1 }}
 
               >
-                MAILING APPLICATION
+                DASHBOARD
               </Typography>
               <Link to="/login" variant="body2" className='logOut'>
                 Logout
