@@ -13,15 +13,21 @@ import Mail_animation from '../Images/Mail_animation.json'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import NotesIcon from '@mui/icons-material/Notes';
 import { addSignupUser } from '../Redux/Reducer'
-import { useDispatch} from 'react-redux'
-import { useState} from 'react'
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { Link, useNavigate  } from 'react-router-dom';
 import logo from '../Images/logo.png'
 
 
 
 const defaultTheme = createTheme();
 const Signup = () => {
+
+    const navigate = useNavigate();
+
+    const handleLoginLinkClick = () => {
+      navigate('/');
+    };
 
     const dispatch = useDispatch()
 
@@ -164,7 +170,9 @@ const Signup = () => {
                                     <Grid item xs>
                                     </Grid>
                                     <Grid item>
-                                    <Link to="/">Already have an account? Sign In</Link>
+                                        <div onClick={handleLoginLinkClick}>
+                                            <Link to="/">Already have an account? Sign In</Link>
+                                        </div>
                                     </Grid>
                                 </Grid>
                             </Box>
