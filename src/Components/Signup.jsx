@@ -13,8 +13,8 @@ import Mail_animation from '../Images/Mail_animation.json'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import NotesIcon from '@mui/icons-material/Notes';
 import { addSignupUser } from '../Redux/Reducer'
-import { useDispatch, useSelector } from 'react-redux'
-import { useState, useEffect } from 'react'
+import { useDispatch} from 'react-redux'
+import { useState} from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../Images/logo.png'
 
@@ -65,7 +65,7 @@ const Signup = () => {
                         md={7}
                         sx={{
                             backgroundColor: '#392C7E',
-                            display: 'flex',
+                            // display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -164,10 +164,7 @@ const Signup = () => {
                                     <Grid item xs>
                                     </Grid>
                                     <Grid item>
-                                    <Link to="/login">Already have an account? Sign In</Link>
-                                        {/* <Link to="/login" variant="body2">
-                                            {"Already have an account? Sign In"}
-                                        </Link> */}
+                                    <Link to="/">Already have an account? Sign In</Link>
                                     </Grid>
                                 </Grid>
                             </Box>

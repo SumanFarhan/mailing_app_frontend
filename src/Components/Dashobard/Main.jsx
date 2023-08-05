@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react'
+import React, { useState } from 'react'
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -16,7 +16,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Listitems from './listItems'
-import Orders from './Mails';
 import Compose from '../Compose'
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
@@ -139,7 +138,7 @@ const Main = () => {
               >
                 DASHBOARD
               </Typography>
-              <Link to="/login" variant="body2" className='logOut'>
+              <Link to="/" variant="body2" className='logOut'>
                 Logout
               </Link>
             </Toolbar>
@@ -187,7 +186,6 @@ const Main = () => {
                 <Grid item xs={12}>
                   <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                     <Outlet />
-                    {/* <Orders /> */}
                   </Paper>
                 </Grid>
               </Grid>

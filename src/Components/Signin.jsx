@@ -18,12 +18,13 @@ import NotesIcon from '@mui/icons-material/Notes';
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { addLoginUser } from '../Redux/Reducer'
+import { addLoginUser, resetRedirectToDashboard } from '../Redux/Reducer'
 import logo from '../Images/logo.png'
 
 
 
 const defaultTheme = createTheme();
+
 const Signin = () => {
 
     const dispatch = useDispatch()
@@ -47,9 +48,24 @@ const Signin = () => {
 
     useEffect(() => {
         if (DashboardCheck) {
-            navigate("/main");
+            navigate('/main');
+            
+            dispatch(resetRedirectToDashboard());
         }
-    }, [DashboardCheck])
+    }, [DashboardCheck, dispatch, navigate]);
+
+
+    // useEffect(() => {
+    //     if (DashboardCheck) {
+    //       navigate('/main');
+    //     }
+    //   }, [DashboardCheck]);
+
+    //   useEffect(() => {
+    //     dispatch(resetRedirectToDashboard());
+    //   }, [dispatch]);
+
+
 
     const handleSubmit = (event) => {
         dispatch(addLoginUser(signIn))
@@ -75,13 +91,13 @@ const Signin = () => {
                         md={7}
                         sx={{
                             backgroundColor: '#392C7E',
-                            display: 'flex',
+                            // display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                             justifyContent: 'center',
                             padding: '40px 20px',
                             position: 'relative',
-                            display: { xs: 'none', sm: 'none', md: 'flex' }, // Hide on screens with width <= 619px
+                            display: { xs: 'none', sm: 'none', md: 'flex' },
                         }}
                     >
                         <img src={logo} alt="Logo" style={{ width: '100px', height: '100px', position: 'absolute', top: '20px', left: '20px' }} />
@@ -170,7 +186,7 @@ const Signin = () => {
                                     <Grid item xs>
                                     </Grid>
                                     <Grid item>
-                                        <Link to="/">Don't have an account? Sign Up</Link>
+                                        <Link to="/signup">Don't have an account? Sign Up</Link>
                                     </Grid>
                                 </Grid>
                             </Box>
