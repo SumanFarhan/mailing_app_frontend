@@ -87,6 +87,10 @@ const defaultTheme = createTheme();
 
 const Main = () => {
 
+  const logout = () => {
+    window.open("http://localhost:3000/", "_self")
+  }
+
   const location = useLocation();
 
   const [openModal, setOpenModal] = useState(false);
@@ -138,9 +142,7 @@ const Main = () => {
               >
                 DASHBOARD
               </Typography>
-              <Link to="/" variant="body2" className='logOut'>
-                Logout
-              </Link>
+              <Button variant="contained" className="compose" onClick={logout} style={{marginTop:'20px'}}>LogOut</Button>
             </Toolbar>
           </AppBar>
           <Drawer variant="permanent" open={open}>
@@ -158,10 +160,10 @@ const Main = () => {
             </Toolbar>
             <Divider />
             <Button variant="contained" className="compose" onClick={handleOpenModal}
-              >
+            >
               <EditIcon /> {open ? 'Compose' : ''}
             </Button>
-              <Compose open={openModal} handleClose={handleCloseModal} />
+            <Compose open={openModal} handleClose={handleCloseModal} />
             <List component="nav">
               <Listitems location={location} type={location.pathname.split('/').pop()} />
             </List>
