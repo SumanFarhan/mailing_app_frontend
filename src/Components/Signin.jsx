@@ -18,7 +18,7 @@ import NotesIcon from '@mui/icons-material/Notes';
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { addLoginUser, resetRedirectToDashboard } from '../Redux/Reducer'
+import { addLoginUser} from '../Redux/Reducer'
 import logo from '../Images/logo.png'
 
 
@@ -49,21 +49,8 @@ const Signin = () => {
     useEffect(() => {
         if (DashboardCheck) {
             navigate('/main');
-            
-            dispatch(resetRedirectToDashboard());
         }
     }, [DashboardCheck, dispatch, navigate]);
-
-
-    // useEffect(() => {
-    //     if (DashboardCheck) {
-    //       navigate('/main');
-    //     }
-    //   }, [DashboardCheck]);
-
-    //   useEffect(() => {
-    //     dispatch(resetRedirectToDashboard());
-    //   }, [dispatch]);
 
 
 

@@ -142,7 +142,7 @@ const Main = () => {
               >
                 DASHBOARD
               </Typography>
-              <Button variant="contained" className="compose" onClick={logout} style={{marginTop:'20px'}}>LogOut</Button>
+              <Button variant="contained" className="compose" onClick={logout} style={{marginTop:'20px',marginBottom:'25px'}}>LogOut</Button>
             </Toolbar>
           </AppBar>
           <Drawer variant="permanent" open={open}>
@@ -159,12 +159,12 @@ const Main = () => {
               </IconButton>
             </Toolbar>
             <Divider />
-            <Button variant="contained" className="compose" onClick={handleOpenModal}
+            <Button variant="contained" className="compose" onClick={handleOpenModal} style={{marginTop:'10px'}}
             >
               <EditIcon /> {open ? 'Compose' : ''}
             </Button>
             <Compose open={openModal} handleClose={handleCloseModal} />
-            <List component="nav">
+            <List component="nav" style={{marginTop:'20px'}}>
               <Listitems location={location} type={location.pathname.split('/').pop()} />
             </List>
           </Drawer>

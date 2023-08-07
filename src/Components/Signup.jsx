@@ -23,10 +23,9 @@ import logo from '../Images/logo.png'
 const defaultTheme = createTheme();
 const Signup = () => {
 
-    const navigate = useNavigate();
 
     const handleLoginLinkClick = () => {
-      navigate('/');
+        window.location.href = 'http://localhost:3000/';
     };
 
     const dispatch = useDispatch()
@@ -170,9 +169,9 @@ const Signup = () => {
                                     <Grid item xs>
                                     </Grid>
                                     <Grid item>
-                                        <div onClick={handleLoginLinkClick}>
-                                            <Link to="/">Already have an account? Sign In</Link>
-                                        </div>
+                                        {/* <div onClick={handleLoginLinkClick}> */}
+                                        <Link onClick={handleLoginLinkClick}>Already have an account? Sign In</Link>
+                                        {/* </div> */}
                                     </Grid>
                                 </Grid>
                             </Box>

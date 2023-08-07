@@ -39,11 +39,7 @@ const initialState = {
 export const addUser = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    resetRedirectToDashboard: (state) => {
-      state.redirectToDashboard = false;
-    },
-  },
+  reducers: {},
   extraReducers: {
     [addSignupUser.rejected]: (state) => {
       console.log('Signup Rejected');
@@ -73,6 +69,6 @@ export const addUser = createSlice({
 })
 
 
-export const { SignupReducer, LoginReducer,resetRedirectToDashboard } = addUser.actions
+export const { SignupReducer, LoginReducer} = addUser.actions
 
 export default addUser.reducer 
